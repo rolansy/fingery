@@ -497,6 +497,10 @@ function TypingTest({ user }) {
   );
 }
 
+function isIos() {
+  return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+}
+
 function InstallPWAButton() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [show, setShow] = useState(false);
@@ -517,6 +521,14 @@ function InstallPWAButton() {
       deferredPrompt.userChoice.then(() => setShow(false));
     }
   };
+
+  if (isIos()) {
+    return (
+      <div className="pwa-ios-msg">
+        To install, tap <span style={{fontWeight:600}}>&#x1f5d2;</span> (Share) and select <b>Add to Home Screen</b>.
+      </div>
+    );
+  }
 
   if (!show) return null;
   return (
