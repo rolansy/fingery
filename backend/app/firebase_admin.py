@@ -3,9 +3,12 @@ from firebase_admin import credentials, auth, firestore
 from fastapi import HTTPException, Request
 import os
 
+# Always use the file path in the container
+FIREBASE_CRED_PATH = os.getenv("FIREBASE_ADMIN_CREDENTIAL", "firebase_admin.json")
+
 # Initialize Firebase Admin
 if not firebase_admin._apps:
-    cred = credentials.Certificate(os.getenv("FIREBASE_ADMIN_CREDENTIAL"))
+    cred = credentials.Certificate(FIREBASE_CRED_PATH)
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
