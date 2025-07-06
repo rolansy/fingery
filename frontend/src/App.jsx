@@ -497,6 +497,35 @@ function TypingTest({ user }) {
   );
 }
 
+function InstallPWAButton() {
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShow(true);
+    };
+    window.addEventListener("beforeinstallprompt", handler);
+    return () => window.removeEventListener("beforeinstallprompt", handler);
+  }, []);
+
+  const handleInstall = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => setShow(false));
+    }
+  };
+
+  if (!show) return null;
+  return (
+    <button className="pwa-install-btn" onClick={handleInstall}>
+      Install fingery App
+    </button>
+  );
+}
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -541,6 +570,7 @@ function App() {
         </div>
       </motion.header>
       <TypingTest user={user} />
+      <InstallPWAButton />
       <footer>
         <small>Minimalist Speed Typing Test &copy; {new Date().getFullYear()}</small>
       </footer>
