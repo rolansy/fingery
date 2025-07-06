@@ -59,72 +59,7 @@ A modern, minimalist typing speed test built with cutting-edge technologies for 
 - **Firebase Firestore** - NoSQL database
 - **Firebase Authentication** - User management
 
-## 🚀 Quick Start
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v16 or higher)
-- [Python](https://www.python.org/) (v3.8 or higher)
-- [Docker](https://www.docker.com/) (optional, for containerized deployment)
-- [Firebase](https://firebase.google.com/) account
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/yourusername/fingery.git
-cd fingery
-```
-
-### 2. Firebase Setup
-1. Go to [Firebase Console](https://console.firebase.google.com/) and create a new project
-2. Enable **Authentication** → **Google Sign-in**
-3. Create a **Firestore Database** in test mode
-4. Go to **Project Settings** → **Service Accounts** → **Generate new private key**
-5. Download as `firebase_admin.json` and place in project root
-6. Copy your web app config from **Project Settings** → **General**
-
-### 3. Environment Configuration
-
-#### Frontend Setup
-```bash
-cd frontend
-npm install
-```
-
-Edit `src/firebase.js` with your Firebase config:
-```javascript
-const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  // ... other config
-};
-```
-
-#### Backend Setup
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-### 4. Run Locally
-
-#### Development Mode
-```bash
-# Terminal 1 - Backend
-cd backend
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-
-# Terminal 2 - Frontend
-cd frontend
-npm run dev
-```
-
-#### Production Mode (Docker)
-```bash
-# Make sure firebase_admin.json is in project root
-docker-compose up --build
-```
-
-Visit `http://localhost:5173` to start typing! 🎯
 
 ## 📊 Analytics & Features
 
@@ -142,109 +77,13 @@ Visit `http://localhost:5173` to start typing! 🎯
 - **PWA Support** - Install as native app
 - **Offline Capable** - Works without internet
 
-## 🎨 Customization
 
-### Adding Word Lists
-Edit `backend/app/api.py` to add custom word lists:
-```python
-CUSTOM_WORDS = [
-    "your", "custom", "word", "list", "here"
-]
-```
 
-### Styling Changes
-Modify `frontend/src/index.css` for custom themes and styling.
 
-### Backend Analytics
-Customize analytics calculations in `backend/app/api.py`:
-```python
-def calculate_analytics(typing_data):
-    # Your custom analytics logic
-    pass
-```
 
-## 🚀 Deployment
 
-### Vercel (Frontend)
-1. Connect your GitHub repository
-2. Set build command: `npm run build`
-3. Set output directory: `dist`
-4. Add environment variables for Firebase config
 
-### Railway/Render (Backend)
-1. Connect your repository
-2. Set build command: `pip install -r requirements.txt`
-3. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-4. Add `firebase_admin.json` as environment variable
 
-### Docker Deployment
-```bash
-# Build and run
-docker-compose up --build -d
-
-# Scale if needed
-docker-compose up --scale backend=3
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-```bash
-# Frontend (.env)
-VITE_BACKEND_URL=http://localhost:8000
-VITE_FIREBASE_API_KEY=your-api-key
-
-# Backend
-FIREBASE_ADMIN_PATH=/path/to/firebase_admin.json
-```
-
-### Firebase Collections
-The app uses these Firestore collections:
-- `users` - User profiles and settings
-- `typing_sessions` - Individual test results
-- `analytics` - Aggregated performance data
-
-## 🤝 Contributing
-
-We love contributions! Here's how you can help:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Guidelines
-- Follow the existing code style
-- Add tests for new features
-- Update documentation as needed
-- Test on multiple devices/browsers
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**PWA Install Not Showing**
-- Ensure you're on HTTPS (except localhost)
-- Check that manifest.json is valid
-- Clear browser cache and reload
-
-**Firebase Connection Issues**
-- Verify `firebase_admin.json` is in the correct location
-- Check Firebase project settings and permissions
-- Ensure Firestore rules allow read/write
-
-**Analytics Not Loading**
-- Check backend logs for errors
-- Verify Firebase credentials
-- Ensure network connectivity
-
-## 📈 Performance
-
-- **Frontend**: < 100ms initial load time
-- **Backend**: < 50ms API response time
-- **Analytics**: Real-time calculation during typing
-- **PWA**: Offline-capable with service worker
 
 ## 🏆 Roadmap
 
@@ -267,10 +106,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Firebase** - Backend-as-a-Service platform
 - **Framer Motion** - Beautiful animations
 
-## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/fingery/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/fingery/discussions)
 
 ---
 
