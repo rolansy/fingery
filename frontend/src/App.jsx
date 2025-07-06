@@ -277,8 +277,11 @@ function TypingTest({ user }) {
   });
 
   // Prepare chart data: one point per bin
+  const WPM_CAP = 200; // cap WPM at 200 for chart readability
   const binnedChartData = bins.map((bin, i) => {
-    const avgWpm = bin.wpm.length ? (bin.wpm.reduce((a, b) => a + b, 0) / bin.wpm.length) : null;
+    // Filter out WPM outliers above the cap
+    const filteredWpm = bin.wpm.filter(w => w <= WPM_CAP);
+    const avgWpm = filteredWpm.length ? (filteredWpm.reduce((a, b) => a + b, 0) / filteredWpm.length) : null;
     const avgAcc = bin.accuracy.length ? (bin.accuracy.reduce((a, b) => a + b, 0) / bin.accuracy.length) : null;
     return {
       bin: i,
