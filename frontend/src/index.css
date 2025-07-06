@@ -654,3 +654,22 @@ footer {
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
+
+.pwa-install-btn {
+  background: linear-gradient(135deg, #4f8cff, #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: block;
+  box-shadow: 0 8px 25px rgba(79, 140, 255, 0.2);
+  transition: all 0.2s;
+}
+.pwa-install-btn:hover {
+  background: linear-gradient(135deg, #8b5cf6, #4f8cff);
+  transform: translateY(-2px);
+}
